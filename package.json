@@ -11,12 +11,14 @@
     "lint:fix": "eslint src --ext .ts,.tsx --fix"
   },
   "dependencies": {
+    "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "wouter": "^2.8.0-alpha.2"
   },
   "devDependencies": {
-    "@sn0wye/eslint-config": "^1.1.0",
+    "@sn0wye/eslint-config": "^1.2.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
