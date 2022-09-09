@@ -8,8 +8,7 @@ import { NewCycleForm } from './components/NewCycleForm';
 import {
   HomeContainer,
   StartCountdownButton,
-  // eslint-disable-next-line prettier/prettier
-  StopCountdownButton
+  StopCountdownButton,
 } from './styles';
 
 const newCycleValidationSchema = z.object({
