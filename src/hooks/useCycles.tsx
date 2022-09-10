@@ -47,6 +47,11 @@ export const CyclesContextProvider = ({ children }: PropsWithChildren) => {
       if (storedStateAsJson) {
         return JSON.parse(storedStateAsJson);
       }
+
+      return {
+        cycles: [],
+        activeCycleId: null,
+      };
     }
   );
 
