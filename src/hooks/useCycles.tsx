@@ -1,7 +1,9 @@
+import { differenceInSeconds } from 'date-fns';
 import {
   createContext,
   PropsWithChildren,
   useContext,
+  useEffect,
   useReducer,
   useState,
 } from 'react';
@@ -31,15 +33,40 @@ interface CyclesContextType {
 const CyclesContext = createContext({} as CyclesContextType);
 
 export const CyclesContextProvider = ({ children }: PropsWithChildren) => {
-  const [cyclesState, dispatch] = useReducer(cyclesReducer, {
-    cycles: [],
-    activeCycleId: null,
-  });
+  const [cyclesState, dispatch] = useReducer(
+    cyclesReducer,
+    {
+      cycles: [],
+      activeCycleId: null,
+    },
+    () => {
+      const storedStateAsJson = localStorage.getItem(
+        '@pomodoro-timer:cycles-state-1.0.0'
+      );
 
-  const [passedSecondsAmount, setPassedSecondsAmount] = useState<number>(0);
+      if (storedStateAsJson) {
+        return JSON.parse(storedStateAsJson);
+      }
+    }
+  );
+
   const { cycles, activeCycleId } = cyclesState;
 
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
+
+  const [passedSecondsAmount, setPassedSecondsAmount] = useState(() => {
+    if (activeCycle) {
+      return differenceInSeconds(new Date(), new Date(activeCycle.startDate));
+    }
+
+    return 0;
+  });
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cyclesState);
+
+    localStorage.setItem('@pomodoro-timer:cycles-state-1.0.0', stateJSON);
+  }, [cyclesState]);
 
   const setPassedSeconds = (seconds: number) => {
     setPassedSecondsAmount(seconds);
