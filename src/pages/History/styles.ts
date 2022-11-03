@@ -57,6 +57,18 @@ export const HistoryList = styled.div`
         padding-right: 1.5rem;
       }
     }
+
+    tr:last-child {
+      td:first-child {
+        border-bottom-left-radius: 8px;
+        padding-left: 1.5rem;
+      }
+
+      td:last-child {
+        border-bottom-right-radius: 8px;
+        padding-right: 1.5rem;
+      }
+    }
   }
 `;
 
