@@ -5,12 +5,13 @@ import {
   useContext,
   useEffect,
   useReducer,
-  useState,
+  useState
 } from 'react';
+
 import {
   addNewCycleAction,
   interruptCurrentCycleAction,
-  markCurrentCycleAsFinishedAction,
+  markCurrentCycleAsFinishedAction
 } from '../reducers/cycles/actions';
 import { Cycle, cyclesReducer } from '../reducers/cycles/reducer';
 
@@ -37,7 +38,7 @@ export const CyclesContextProvider = ({ children }: PropsWithChildren) => {
     cyclesReducer,
     {
       cycles: [],
-      activeCycleId: null,
+      activeCycleId: null
     },
     () => {
       const storedStateAsJson = localStorage.getItem(
@@ -50,14 +51,14 @@ export const CyclesContextProvider = ({ children }: PropsWithChildren) => {
 
       return {
         cycles: [],
-        activeCycleId: null,
+        activeCycleId: null
       };
     }
   );
 
   const { cycles, activeCycleId } = cyclesState;
 
-  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
+  const activeCycle = cycles.find(cycle => cycle.id === activeCycleId);
 
   const [passedSecondsAmount, setPassedSecondsAmount] = useState(() => {
     if (activeCycle) {
@@ -86,7 +87,7 @@ export const CyclesContextProvider = ({ children }: PropsWithChildren) => {
       id: window.crypto.randomUUID(),
       task: data.task,
       minutesAmount: data.minutesAmount,
-      startDate: new Date(),
+      startDate: new Date()
     };
 
     dispatch(addNewCycleAction(newCycle));
@@ -108,7 +109,7 @@ export const CyclesContextProvider = ({ children }: PropsWithChildren) => {
         passedSecondsAmount,
         setPassedSeconds,
         interruptCurrentCycle,
-        createNewCycle,
+        createNewCycle
       }}
     >
       {children}

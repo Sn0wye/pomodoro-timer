@@ -1,4 +1,5 @@
 import { formatDistanceToNow } from 'date-fns';
+
 import { useCycles } from '../../hooks/useCycles';
 import { HistoryContainer, HistoryList, Status } from './styles';
 
@@ -19,13 +20,13 @@ export const History = () => {
           </thead>
 
           <tbody>
-            {cycles.map((cycle) => (
+            {cycles.map(cycle => (
               <tr key={cycle.id}>
                 <td>{cycle.task}</td>
                 <td>{cycle.minutesAmount} minutos</td>
                 <td>
                   {formatDistanceToNow(new Date(cycle.startDate), {
-                    addSuffix: true,
+                    addSuffix: true
                   })}
                 </td>
                 <td>

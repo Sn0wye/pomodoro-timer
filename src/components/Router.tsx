@@ -1,4 +1,5 @@
 import { Route } from 'wouter';
+
 import { DefaultLayout } from '../layouts/DefaultLayout';
 import { History } from '../pages/History';
 import { Home } from '../pages/Home';

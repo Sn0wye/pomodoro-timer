@@ -1,4 +1,5 @@
 import { Scroll, Timer } from 'phosphor-react';
+
 import IgniteLogo from '../../assets/ignite-logo.svg';
 import { ActiveLink } from '../ActiveLink';
 import { HeaderContainer } from './styles';

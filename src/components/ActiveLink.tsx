@@ -1,4 +1,5 @@
-import { HTMLProps, ReactNode } from 'react';
+/* eslint-disable tailwindcss/no-custom-classname */
+import type { HTMLProps, ReactNode } from 'react';
 import { Link as WouterLink, useLocation } from 'wouter';
 
 interface LinkProps extends HTMLProps<HTMLAnchorElement> {

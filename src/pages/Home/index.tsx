@@ -2,18 +2,19 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { HandPalm, Play } from 'phosphor-react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { z } from 'zod';
+
 import { useCycles } from '../../hooks/useCycles';
 import { Countdown } from './components/Countdown';
 import { NewCycleForm } from './components/NewCycleForm';
 import {
   HomeContainer,
   StartCountdownButton,
-  StopCountdownButton,
+  StopCountdownButton
 } from './styles';
 
 const newCycleValidationSchema = z.object({
   task: z.string().min(1),
-  minutesAmount: z.number().min(5).max(60),
+  minutesAmount: z.number().min(5).max(60)
 });
 
 type NewCycleFormData = z.infer<typeof newCycleValidationSchema>;
@@ -23,8 +24,8 @@ export const Home = () => {
     resolver: zodResolver(newCycleValidationSchema),
     defaultValues: {
       task: '',
-      minutesAmount: 0,
-    },
+      minutesAmount: 0
+    }
   });
 
   const { activeCycle, createNewCycle, interruptCurrentCycle } = useCycles();
